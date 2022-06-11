@@ -7,7 +7,7 @@ import {
   errorHandler as morganErrorHandler,
   corsOptions,
 } from '@Config/index';
-import { credentials } from '@Middlewares/credentials';
+//import { credentials } from '@Middlewares/credentials';
 import { routes } from '@Routes/v1';
 import {
   errorConverter,
@@ -53,14 +53,19 @@ app.use(cookieParser());
 // gzip compression
 app.use(compression());
 
+
+/*
 // enable credentials for allowed origins
 app.use(credentials);
+*/
 
 // enable cors
 app.use(cors(corsOptions));
 
+/*
 // setup favicon route
 app.use(favicon(join(dir, '../public/images/favicon.ico')));
+*/
 
 // public folder
 app.use(staticServe(join(dir, '../public')));

@@ -9,11 +9,34 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model User {
+model Plant {
   id       String   @id @default(uuid())
-  username String   @unique
-  email    String   @unique
-  password String
-  payload  String?
-  tokens   String[]
+  name     String   @unique
+  lightVals LightVal[]
+  humidityVals HumidityVal[]
+  fluidsVals  FluidsVal[]
+}
+
+model LightVal {
+  id       String   @id @default(uuid())
+  plant    Plant?   @relation(fields: [plantid], references: [id])
+  plantid  String?
+  val      String
+  date     DateTime
+}
+
+model HumidityVal {
+  id       String   @id @default(uuid())
+  plant    Plant?   @relation(fields: [plantid], references: [id])
+  plantid  String?
+  val      String
+  date     DateTime
+}
+
+model FluidsVal {
+  id       String   @id @default(uuid())
+  plant    Plant?   @relation(fields: [plantid], references: [id])
+  plantid  String?
+  val      String
+  date     DateTime  
 }
