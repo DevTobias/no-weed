@@ -49,3 +49,13 @@ model FluidsVal {
   val      String
   date     DateTime  @db.Timestamp(3)
 }
+
+model LightRule {
+  id       String   @id @default(uuid())
+  hourStart     Int
+  minuteStart   Int
+  secondStart   Int
+  hourEnd     Int
+  minuteEnd   Int
+  secondEnd   Int
+  }
