@@ -15,6 +15,15 @@ model Plant {
   lightVals LightVal[]
   humidityVals HumidityVal[]
   fluidsVals  FluidsVal[]
+  tempVals  TempVal[]
+}
+
+model TempVal {
+  id       String   @id @default(uuid())
+  plant    Plant?   @relation(fields: [plantid], references: [id])
+  plantid  String?
+  val      String
+  date     DateTime
 }
 
 model LightVal {
