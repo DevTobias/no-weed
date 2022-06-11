@@ -13,7 +13,7 @@
 **/coverage
 
 # production / builds
-**/lib/
+**/backend/lib/
 **/package/
 **/.parcel-cache/
 **/.turbo/
