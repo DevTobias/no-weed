@@ -1,11 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:frontend/features/control/service/control_service.dart';
 import 'package:frontend/widgets/info_card.dart';
 import 'package:frontend/theme/weed_text_style.dart';
 import 'package:gap/gap.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:intl/intl.dart';
 
-class LightInterval extends StatelessWidget {
+class LightInterval extends ConsumerWidget {
   const LightInterval({
     Key? key,
     required this.startHour,
@@ -20,7 +22,7 @@ class LightInterval extends StatelessWidget {
   final int endMinute;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final startDate = DateTime(2022, 07, 12, startHour, startMinute);
     final endDate = DateTime(2022, 07, 12, endHour, endMinute);
 
@@ -47,7 +49,8 @@ class LightInterval extends StatelessWidget {
                       style: WeedTextTheme.of(context).bodySmall.bold,
                     ),
                     OutlinedButton(
-                      onPressed: () => iosDatePicker(context, true, startDate),
+                      onPressed: () =>
+                          iosDatePicker(context, ref, true, startDate),
                       child: Text(
                         DateFormat("kk:mm").format(startDate),
                       ),
@@ -62,7 +65,8 @@ class LightInterval extends StatelessWidget {
                       style: WeedTextTheme.of(context).bodySmall.bold,
                     ),
                     OutlinedButton(
-                      onPressed: () => iosDatePicker(context, false, endDate),
+                      onPressed: () =>
+                          iosDatePicker(context, ref, false, endDate),
                       child: Text(
                         DateFormat("kk:mm").format(endDate),
                       ),
@@ -77,7 +81,8 @@ class LightInterval extends StatelessWidget {
     );
   }
 
-  iosDatePicker(BuildContext context, bool isStart, DateTime initial) {
+  iosDatePicker(
+      BuildContext context, WidgetRef ref, bool isStart, DateTime initial) {
     showCupertinoModalPopup(
       context: context,
       builder: (BuildContext builder) {
@@ -87,7 +92,9 @@ class LightInterval extends StatelessWidget {
           child: CupertinoDatePicker(
             mode: CupertinoDatePickerMode.time,
             onDateTimeChanged: (value) {
-              print(value.hour);
+              ref
+                  .read(ControlService.controlProvider)
+                  .persistLightInterval(isStart, value);
             },
             initialDateTime: initial,
           ),

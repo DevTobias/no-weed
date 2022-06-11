@@ -6,10 +6,9 @@ class ControlService {
     (ref) => ControlService(),
   );
 
-  Future<ControlModel> fetchCurrentData() async {
-    //final uri = Uri.parse(
-    //'https://my-json-server.typicode.com/DevTobias/no-weed/center');
-    //final data = (await http.get(uri)).body;
+  Future<ControlModel> getControlData() async {
+    //return ControlRepoistory.getControlData();
+
     return ControlModel(
       temperature: 28.3,
       moisture: 23,
@@ -19,16 +18,34 @@ class ControlService {
       startMinute: 0,
       endHour: 18,
       endMinute: 0,
+      lightOn: true,
     );
-    //return ControlModel.fromJson(json.decode(data));
   }
 
-  Future<void> setLightMode(bool mode) async {
+  Future<void> persistLightMode(bool mode) async {
+    return;
+  }
+
+  Future<void> persistLightInterval(bool isStart, DateTime time) async {
     return;
   }
 
   Future<void> waterPlant() async {
-    print("manually water plant");
     return;
   }
+}
+
+class LightsNotifier extends StateNotifier<bool> {
+  LightsNotifier(this.ref) : super(false) {
+    initState();
+  }
+
+  final Ref ref;
+
+  void initState() async {
+    state = (await ref.read(ControlService.controlProvider).getControlData())
+        .lightOn;
+  }
+
+  void setIsLight(bool value) => state = value;
 }

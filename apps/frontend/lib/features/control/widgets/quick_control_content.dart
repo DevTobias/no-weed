@@ -11,17 +11,15 @@ class QuickControlContent extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     void handleChange(bool val) {
-      ref
-          .read(AllCollectionsViewmodel.lightDataProvider.notifier)
-          .setIsLight(val);
-      ref.read(ControlService.controlProvider).setLightMode(val);
+      ref.read(AllCollectionsViewmodel.lightsProvider.notifier).setIsLight(val);
+      ref.read(ControlService.controlProvider).persistLightMode(val);
     }
 
     void handlePlant() {
       ref.read(ControlService.controlProvider).waterPlant();
     }
 
-    final lightEnabled = ref.watch(AllCollectionsViewmodel.lightDataProvider);
+    final lightEnabled = ref.watch(AllCollectionsViewmodel.lightsProvider);
 
     return Container(
       height: 120,

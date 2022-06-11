@@ -7,6 +7,7 @@ class ControlModel {
   final int startMinute;
   final int endHour;
   final int endMinute;
+  final bool lightOn;
 
   ControlModel({
     required this.temperature,
@@ -17,6 +18,7 @@ class ControlModel {
     required this.endHour,
     required this.startMinute,
     required this.endMinute,
+    required this.lightOn,
   });
 
   ControlModel.fromJson(Map<String, dynamic> json)
@@ -27,5 +29,6 @@ class ControlModel {
         startHour = json['start_hour'],
         endHour = json['end_hour'],
         startMinute = json['start_minute'],
-        endMinute = json['end_minute'];
+        endMinute = json['end_minute'],
+        lightOn = json['light_on'];
 }
