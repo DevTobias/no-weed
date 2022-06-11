@@ -21,11 +21,10 @@ export async function compileData(limit: number=5){
         
 
     } catch(_) {
-        throw new ApiError(httpStatus.BAD_REQUEST, 'user with id not found');
+        throw new ApiError(httpStatus.BAD_REQUEST, '');
     }
 
 
-    return {data: 'amongus'}
 }
 
 
@@ -33,13 +32,14 @@ export async function compileNames(){
 
 
     try{
-        
+
+      // get all of the plants
+      const plants = await prisma.plant.findMany();
+      return plants;
 
     } catch(_) {
-        throw new ApiError(httpStatus.BAD_REQUEST, 'user with id not found');
+        throw new ApiError(httpStatus.BAD_REQUEST, '');
     }
 
-
-    return {data: 'amongus'}
 
 }
