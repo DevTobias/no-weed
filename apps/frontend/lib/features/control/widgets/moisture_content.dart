@@ -3,7 +3,12 @@ import 'package:frontend/theme/weed_text_style.dart';
 import 'package:gap/gap.dart';
 
 class MoistureContent extends StatelessWidget {
-  const MoistureContent({Key? key}) : super(key: key);
+  const MoistureContent({
+    Key? key,
+    required this.moisture,
+  }) : super(key: key);
+
+  final int moisture;
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +27,7 @@ class MoistureContent extends StatelessWidget {
                 style: WeedTextTheme.of(context).bodyMedium.bold,
               ),
               Text(
-                "42 %",
+                "$moisture %",
                 style: WeedTextTheme.of(context).bodySmall,
               ),
             ],

@@ -1,12 +1,28 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:frontend/features/control/service/control_service.dart';
+import 'package:frontend/features/control/viewmodel/control_viewmodel.dart';
 import 'package:frontend/theme/weed_text_style.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class QuickControlContent extends StatelessWidget {
+class QuickControlContent extends ConsumerWidget {
   const QuickControlContent({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    void handleChange(bool val) {
+      ref
+          .read(AllCollectionsViewmodel.lightDataProvider.notifier)
+          .setIsLight(val);
+      ref.read(ControlService.controlProvider).setLightMode(val);
+    }
+
+    void handlePlant() {
+      ref.read(ControlService.controlProvider).waterPlant();
+    }
+
+    final lightEnabled = ref.watch(AllCollectionsViewmodel.lightDataProvider);
+
     return Container(
       height: 120,
       padding: EdgeInsets.symmetric(horizontal: 20),
@@ -24,7 +40,7 @@ class QuickControlContent extends StatelessWidget {
                 "Light off",
                 style: WeedTextTheme.of(context).bodySmall,
               ),
-              CupertinoSwitch(value: false, onChanged: (bool val) {}),
+              CupertinoSwitch(value: lightEnabled, onChanged: handleChange),
             ],
           ),
           ElevatedButton(
@@ -32,7 +48,7 @@ class QuickControlContent extends StatelessWidget {
               primary: Colors.black,
               minimumSize: const Size.fromHeight(30),
             ),
-            onPressed: () {},
+            onPressed: handlePlant,
             child: Text("Water Plant"),
           )
         ],

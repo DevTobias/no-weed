@@ -4,7 +4,12 @@ import 'package:frontend/theme/weed_text_style.dart';
 import 'package:gap/gap.dart';
 
 class TemperatureContent extends StatelessWidget {
-  const TemperatureContent({Key? key}) : super(key: key);
+  const TemperatureContent({
+    Key? key,
+    required this.temperature,
+  }) : super(key: key);
+
+  final double temperature;
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +27,7 @@ class TemperatureContent extends StatelessWidget {
                 text: TextSpan(
                   children: [
                     TextSpan(
-                      text: "20.8",
+                      text: temperature.toString(),
                       style: WeedTextTheme.of(context).bodyMedium.bold,
                     ),
                     TextSpan(

@@ -3,7 +3,12 @@ import 'package:frontend/theme/weed_text_style.dart';
 import 'package:gap/gap.dart';
 
 class LightContent extends StatelessWidget {
-  const LightContent({Key? key}) : super(key: key);
+  const LightContent({
+    Key? key,
+    required this.lightLevel,
+  }) : super(key: key);
+
+  final int lightLevel;
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +27,7 @@ class LightContent extends StatelessWidget {
                 style: WeedTextTheme.of(context).bodyMedium.bold,
               ),
               Text(
-                "420 Lumens",
+                "$lightLevel Lumens",
                 style: WeedTextTheme.of(context).bodySmall,
               ),
             ],

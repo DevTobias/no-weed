@@ -4,7 +4,12 @@ import 'package:frontend/theme/weed_text_style.dart';
 import 'package:liquid_progress_indicator/liquid_progress_indicator.dart';
 
 class WaterLevelContent extends StatelessWidget {
-  const WaterLevelContent({Key? key}) : super(key: key);
+  const WaterLevelContent({
+    Key? key,
+    required this.waterLevel,
+  }) : super(key: key);
+
+  final int waterLevel;
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +17,7 @@ class WaterLevelContent extends StatelessWidget {
       height: 120,
       padding: EdgeInsets.symmetric(horizontal: 20),
       child: LiquidCircularProgressIndicator(
-        value: 0.42,
+        value: waterLevel / 100,
         valueColor: AlwaysStoppedAnimation(Colors.lightBlue),
         backgroundColor: WeedColors.warmGreyExtraLight,
         center: Text(
