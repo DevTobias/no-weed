@@ -4,31 +4,43 @@ import { hashSync } from 'bcrypt';
 const prisma = new PrismaClient();
 const saltRounds = 10;
 
-const userData: Prisma.UserCreateInput[] = [
+const plantData: Prisma.PlantCreateInput[] = [
   {
-    username: 'AliceClements',
-    email: 'alice.clements@prisma.io',
-    password: hashSync('password', saltRounds),
+    name: 'Herribert',
   },
   {
-    username: 'MadelineHarding',
-    email: 'madeline.harding@prisma.io',
-    password: hashSync('Harding1310', saltRounds),
+    name: 'Sosenbert',
+  },
+
+];
+
+const lightvalData: Prisma.LightValCreateInput[] = [
+  {
+    val: '0',
+    date: '2022-02-03T12:11:30.111Z'
   },
   {
-    username: 'XeniaKeith',
-    email: 'xenia.Springer@prisma.io',
-    password: hashSync('password', saltRounds),
+    val: '0.1',
+    date: '2022-02-02T12:01:30.111Z'
   },
 ];
 
 async function main() {
   console.log(`Start seeding ...`);
 
-  userData.forEach(async (user) => {
-    const { id } = await prisma.user.create({ data: user });
-    console.log(`Created user with id: ${id}`);
+  plantData.forEach(async (plant) => {
+    const { id } = await prisma.plant.create({ data: plant });
+    console.log(`Created plant with id: ${id}`);
+
+    lightvalData.forEach(async (lightVal) => {
+
+      await prisma.plant.create({ data: plant });
+      console.log(`Created light value.....`);
+
+    });  
+
   });
+
 
   console.log(`Seeding finished.`);
 }
