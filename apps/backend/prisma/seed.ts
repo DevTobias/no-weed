@@ -9,13 +9,8 @@ const saltRounds = 10;
 const plantData: Prisma.PlantCreateInput[] = [
   {
     name: 'Herribert',
-    lightVals: {create: [{ val: '0.1', date: '2022-02-03T12:11:30.111Z'}]},
+    lightVals: {create: [{ val: '0.1', date: '2022-02-03T12:11:30.111Z'},{ val: '0.2', date: '2022-02-08T12:11:30.111Z'}]},
   },
-  {
-    name: 'Sosenbert',
-    lightVals: {create: [{ val: '0.5', date: '2022-04-05T22:11:30.111Z'}]},
-  },
-
 ];
 
 
