@@ -5,5 +5,5 @@
     "light_level": 420,
     "water_level": 69
   },
-  "lightOn": true
+  "lightOn": "true"
 }
