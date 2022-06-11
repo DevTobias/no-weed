@@ -1,0 +1,25 @@
+{
+  "name": "no-plant",
+  "license": "MIT",
+  "private": true,
+  "workspaces": [
+    "apps/*"
+  ],
+  "scripts": {
+    "reload": "yarn install --force",
+    "lint": "turbo run lint",
+    "test": "turbo run test",
+    "build": "turbo run build --force",
+    "clean": "turbo run clean --force",
+    "docker": "docker-compose up --build"
+  },
+  "devDependencies": {
+    "husky": "^7.0.4",
+    "turbo": "latest"
+  },
+  "packageManager": "yarn@1.22.17",
+  "engines": {
+    "npm": ">=7.0.0",
+    "node": ">=14.0.0"
+  }
+}

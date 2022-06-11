@@ -1,0 +1,31 @@
+{
+  "extends": "@infotition/tsi/lib/templates/tsconfig.json",
+  "compilerOptions": {
+    "plugins": [{ "name": "typescript-plugin-css-modules" }],
+    "jsx": "react",
+    "types": ["node", "jest", "@testing-library/jest-dom"],
+    "declaration": true,
+    "declarationDir": "types",
+    "baseUrl": ".",
+    "outDir": "lib",
+    "resolveJsonModule": true,
+    "experimentalDecorators": true,
+    "paths": {
+      "@Config/*": ["src/config/*"],
+      "@Controllers/*": ["src/controllers/*"],
+      "@Docs/*": ["src/docs/*"],
+      "@Middlewares/*": ["src/middlewares/*"],
+      "@Models/*": ["src/models/*"],
+      "@Routes/*": ["src/routes/*"],
+      "@Services/*": ["src/services/*"],
+      "@Utils/*": ["src/utils/*"],
+      "@Validations/*": ["src/validations/*"]
+    }
+  },
+  "ts-node": {
+    "compilerOptions": {
+      "module": "CommonJS"
+    }
+  },
+  "include": ["src/**/*.ts"]
+}
