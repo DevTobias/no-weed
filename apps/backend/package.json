@@ -40,7 +40,9 @@
     "redis": "^4.1.0",
     "serve-favicon": "^2.5.0",
     "winston": "^3.7.2",
-    "zod": "^3.14.4"
+    "zod": "^3.14.4",
+    "serialport": "^10.4.0",
+    "@serialport/parser-readline": "^10.3.0"
   },
   "devDependencies": {
     "@infotition/eslint-config": "^2.2.0",

@@ -23,7 +23,7 @@ model TempVal {
   plant    Plant?   @relation(fields: [plantid], references: [id])
   plantid  String?
   val      String
-  date     DateTime
+  date     DateTime @db.Timestamp(3)
 }
 
 model LightVal {
@@ -31,7 +31,7 @@ model LightVal {
   plant    Plant?   @relation(fields: [plantid], references: [id])
   plantid  String?
   val      String
-  date     DateTime
+  date     DateTime @db.Timestamp(3)
 }
 
 model HumidityVal {
@@ -39,7 +39,7 @@ model HumidityVal {
   plant    Plant?   @relation(fields: [plantid], references: [id])
   plantid  String?
   val      String
-  date     DateTime
+  date     DateTime @db.Timestamp(3)
 }
 
 model FluidsVal {
@@ -47,5 +47,5 @@ model FluidsVal {
   plant    Plant?   @relation(fields: [plantid], references: [id])
   plantid  String?
   val      String
-  date     DateTime  
+  date     DateTime  @db.Timestamp(3)
 }
