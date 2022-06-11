@@ -1,7 +1,14 @@
 import 'package:flutter/material.dart';
 
-class ControlHeader extends StatelessWidget with PreferredSizeWidget {
-  const ControlHeader({Key? key}) : super(key: key);
+class TransparentAppBar extends StatelessWidget with PreferredSizeWidget {
+  const TransparentAppBar({
+    Key? key,
+    this.title = "",
+    this.icon,
+  }) : super(key: key);
+
+  final String title;
+  final IconData? icon;
 
   @override
   Size get preferredSize => const Size.fromHeight(60);
@@ -11,17 +18,17 @@ class ControlHeader extends StatelessWidget with PreferredSizeWidget {
     return AppBar(
       title: _title,
       centerTitle: true,
-      leading: _leading,
+      leading: icon != null ? _leading : null,
     );
   }
 
   Widget get _leading => IconButton(
         onPressed: () {},
-        icon: const Icon(Icons.menu),
+        icon: Icon(icon!),
       );
 
-  Widget get _title => const Text(
-        "No Weed",
+  Widget get _title => Text(
+        title,
         maxLines: 2,
         textAlign: TextAlign.center,
         overflow: TextOverflow.ellipsis,

@@ -3,6 +3,8 @@ import 'package:frontend/features/control/service/control_service.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:http/http.dart' as http;
 
+// move is light to other real service, try to initialize state notifier
+// with this value
 class LightNotifier extends StateNotifier<bool> {
   bool _isLight = false;
 
@@ -18,7 +20,8 @@ class LightNotifier extends StateNotifier<bool> {
 
   _load() async {
     final uri = Uri.parse(
-        'https://my-json-server.typicode.com/DevTobias/no-weed/lightOn');
+      'https://my-json-server.typicode.com/DevTobias/no-weed/lightOn',
+    );
     final data = (await http.get(uri)).body;
     //state = data == "true";
   }

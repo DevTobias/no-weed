@@ -21,7 +21,7 @@ class WaterLevelContent extends StatelessWidget {
         valueColor: AlwaysStoppedAnimation(Colors.lightBlue),
         backgroundColor: WeedColors.warmGreyExtraLight,
         center: Text(
-          "42%",
+          "$waterLevel %",
           style: WeedTextTheme.of(context).bodyMedium.bold.dark,
         ),
       ),

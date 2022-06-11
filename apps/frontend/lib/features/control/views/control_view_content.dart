@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:frontend/features/control/model/control_model.dart';
-import 'package:frontend/features/control/widgets/info_card.dart';
-import 'package:frontend/features/control/widgets/light_content.dart';
-import 'package:frontend/features/control/widgets/moisture_content.dart';
+import 'package:frontend/widgets/info_card.dart';
+import 'package:frontend/features/control/widgets/content/light_content.dart';
+import 'package:frontend/features/control/widgets/light_interval.dart';
+import 'package:frontend/features/control/widgets/content/moisture_content.dart';
 import 'package:frontend/features/control/widgets/quick_control_content.dart';
-import 'package:frontend/features/control/widgets/split_info_card.dart';
-import 'package:frontend/features/control/widgets/temperature_content.dart';
+import 'package:frontend/widgets/split_info_card.dart';
+import 'package:frontend/features/control/widgets/content/temperature_content.dart';
 import 'package:frontend/features/control/widgets/water_level_content.dart';
-import 'package:frontend/features/control/widgets/wifi_content.dart';
+import 'package:frontend/features/control/widgets/content/wifi_content.dart';
 import 'package:frontend/theme/weed_text_style.dart';
 import 'package:gap/gap.dart';
 
@@ -64,7 +65,14 @@ class ControlViewContent extends StatelessWidget {
                 ),
               ),
             ],
-          )
+          ),
+          Gap(20),
+          LightInterval(
+            startHour: data.startHour,
+            endHour: data.endHour,
+            startMinute: data.startMinute,
+            endMinute: data.endMinute,
+          ),
         ],
       ),
     );
