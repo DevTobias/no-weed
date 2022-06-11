@@ -21,35 +21,9 @@ class ControlHeader extends StatelessWidget with PreferredSizeWidget {
       );
 
   Widget get _title => const Text(
-        "No Weeed",
+        "No Weed",
         maxLines: 2,
         textAlign: TextAlign.center,
         overflow: TextOverflow.ellipsis,
       );
 }
-
-/*
-
-@override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(20),
-      child: SizedBox(
-        height: 20,
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            const Icon(
-              Icons.menu,
-              size: 30.0,
-            ),
-            const Text("No Weed"),
-            Container(),
-          ],
-        ),
-      ),
-    );
-  }
-
-*/

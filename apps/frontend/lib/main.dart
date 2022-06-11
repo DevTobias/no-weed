@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:frontend/features/control/views/control-view.dart';
+import 'package:frontend/theme/weed_text_style.dart';
 import 'package:frontend/theme/weed_theme.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,7 +18,11 @@ class MyApp extends StatelessWidget {
       themeMode: ThemeMode.light,
       theme: WeedTheme.getLightTheme(context),
       darkTheme: WeedTheme.getDarkTheme(context),
-      home: const ControlView(),
+      home: ProviderScope(
+        child: WeedTextTheme(
+          child: const ControlView(),
+        ),
+      ),
     );
   }
 }
