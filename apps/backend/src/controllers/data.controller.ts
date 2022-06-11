@@ -12,3 +12,9 @@ export const data = catchAsync(async (req, res) => {
 
 
   });
+
+export const names = catchAsync(async (req, res) => {
+
+    const data = await dataService.compileNames();
+    res.status(httpStatus.OK).send(data);
+    });
