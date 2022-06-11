@@ -19,7 +19,8 @@
       "@Routes/*": ["src/routes/*"],
       "@Services/*": ["src/services/*"],
       "@Utils/*": ["src/utils/*"],
-      "@Validations/*": ["src/validations/*"]
+      "@Validations/*": ["src/validations/*"],
+      "@arduino_controller/*": ["src/arduino_controller/*"]
     }
   },
   "ts-node": {

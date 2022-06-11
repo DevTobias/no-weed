@@ -28,6 +28,9 @@ import express, {
 import helmet from 'helmet';
 import httpStatus from 'http-status';
 import favicon from 'serve-favicon';
+import {setListener} from "@arduino_controller/arduino_controller"
+
+
 
 const dir = dirname(fileURLToPath(import.meta.url));
 export const app = express();
@@ -88,3 +91,5 @@ app.use((err: ApiError, _: Request, __: Response, next: NextFunction) =>
 app.use((err: ApiError, _: Request, res: Response, __: NextFunction) =>
   errorHandler(err, logger, res),
 );
+
+setListener();
