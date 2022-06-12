@@ -1,5 +1,3 @@
-import { dirname, join } from 'path';
-import { fileURLToPath } from 'url';
 import {
   config,
   logger,
@@ -7,8 +5,8 @@ import {
   errorHandler as morganErrorHandler,
   corsOptions,
 } from '@Config/index';
-//import { credentials } from '@Middlewares/credentials';
 import { routes } from '@Routes/v1';
+//import { setListener } from '@arduino_controller/arduino_controller';
 import {
   errorConverter,
   errorHandler,
@@ -23,16 +21,10 @@ import express, {
   Request,
   Response,
   NextFunction,
-  static as staticServe,
 } from 'express';
 import helmet from 'helmet';
 import httpStatus from 'http-status';
-import favicon from 'serve-favicon';
-import {setListener} from "@arduino_controller/arduino_controller"
 
-
-
-const dir = dirname(fileURLToPath(import.meta.url));
 export const app = express();
 
 // set up morgan handlers
@@ -56,22 +48,8 @@ app.use(cookieParser());
 // gzip compression
 app.use(compression());
 
-
-/*
-// enable credentials for allowed origins
-app.use(credentials);
-*/
-
 // enable cors
 app.use(cors(corsOptions));
-
-/*
-// setup favicon route
-app.use(favicon(join(dir, '../public/images/favicon.ico')));
-*/
-
-// public folder
-app.use(staticServe(join(dir, '../public')));
 
 // v1 api routes
 app.use('/v1', routes);
@@ -92,4 +70,4 @@ app.use((err: ApiError, _: Request, res: Response, __: NextFunction) =>
   errorHandler(err, logger, res),
 );
 
-setListener();
+//setListener();

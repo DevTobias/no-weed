@@ -3,7 +3,7 @@ import 'package:frontend/features/control/service/control_service.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class AllCollectionsViewmodel {
-  static final controlDataProvider = FutureProvider.autoDispose<ControlModel>(
+  static final controlDataProvider = FutureProvider.autoDispose<ControlModel?>(
     (ref) async => ref.read(ControlService.controlProvider).getControlData(),
   );
 

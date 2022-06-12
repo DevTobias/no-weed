@@ -4,17 +4,17 @@ import 'package:frontend/widgets/split_content_card.dart';
 class MoistureContent extends StatelessWidget {
   const MoistureContent({
     Key? key,
-    required this.moisture,
+    required this.humidity,
   }) : super(key: key);
 
-  final int moisture;
+  final int? humidity;
 
   @override
   Widget build(BuildContext context) {
     return SplitContentCard(
       icon: Icons.water_drop,
-      title: "Moisture",
-      subtitle: "$moisture %",
+      title: "Humidity",
+      subtitle: humidity != null ? "$humidity %" : "-",
     );
   }
 }

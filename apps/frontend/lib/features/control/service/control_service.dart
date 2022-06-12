@@ -1,4 +1,5 @@
 import 'package:frontend/features/control/model/control_model.dart';
+import 'package:frontend/features/control/service/control_repository.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class ControlService {
@@ -6,32 +7,20 @@ class ControlService {
     (ref) => ControlService(),
   );
 
-  Future<ControlModel> getControlData() async {
-    //return ControlRepoistory.getControlData();
-
-    return ControlModel(
-      temperature: 28.3,
-      moisture: 23,
-      lightLevel: 230,
-      waterLevel: 42,
-      startHour: 7,
-      startMinute: 0,
-      endHour: 18,
-      endMinute: 0,
-      lightOn: true,
-    );
+  Future<ControlModel?> getControlData() async {
+    return ControlRepoistory.getControlData();
   }
 
   Future<void> persistLightMode(bool mode) async {
-    return;
-  }
-
-  Future<void> persistLightInterval(bool isStart, DateTime time) async {
-    return;
+    return ControlRepoistory.persistLightMode(mode);
   }
 
   Future<void> waterPlant() async {
-    return;
+    return ControlRepoistory.waterPlant();
+  }
+
+  Future<void> persistLightInterval(bool isStart, DateTime time) async {
+    return ControlRepoistory.persistLightInterval(isStart, time);
   }
 }
 
@@ -44,7 +33,8 @@ class LightsNotifier extends StateNotifier<bool> {
 
   void initState() async {
     state = (await ref.read(ControlService.controlProvider).getControlData())
-        .lightOn;
+            ?.lightOn ??
+        false;
   }
 
   void setIsLight(bool value) => state = value;

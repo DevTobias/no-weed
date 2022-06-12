@@ -15,7 +15,7 @@ class WifiContent extends StatelessWidget {
     return SplitContentCard(
       icon: Icons.wifi,
       title: "WiFi",
-      subtitle: connected ? "Connected" : "Disconnected",
+      subtitle: connected ? "Connected" : "Invalid",
       subtitlePrefix: Container(
         margin: EdgeInsets.only(top: 4),
         child: CircleAvatar(

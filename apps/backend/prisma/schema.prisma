@@ -9,53 +9,39 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Plant {
-  id       String   @id @default(uuid())
-  name     String   @unique
-  lightVals LightVal[]
-  humidityVals HumidityVal[]
-  fluidsVals  FluidsVal[]
-  tempVals  TempVal[]
+model Glasshouse {
+  id                    String             @id @default(uuid())
+  lightValues           LightValue[]
+  humidityValues        HumidityValue[]
+  temperatureValues     TemperatureValue[]
+  waterLevel            Int
+  lightPhaseHourStart   Int
+  lightPhaseMinuteStart Int
+  lightPhaseHourEnd     Int
+  lightPhaseMinuteEnd   Int
+  lightOn               Boolean
 }
 
-model TempVal {
-  id       String   @id @default(uuid())
-  plant    Plant?   @relation(fields: [plantid], references: [id])
-  plantid  String?
-  val      String
-  date     DateTime @db.Timestamp(3)
+model LightValue {
+  lightId      String      @id @default(uuid())
+  value        Int
+  date         DateTime    @default(now())
+  Glasshouse   Glasshouse? @relation(fields: [glasshouseId], references: [id])
+  glasshouseId String?
 }
 
-model LightVal {
-  id       String   @id @default(uuid())
-  plant    Plant?   @relation(fields: [plantid], references: [id])
-  plantid  String?
-  val      String
-  date     DateTime @db.Timestamp(3)
+model HumidityValue {
+  humidityId   String      @id @default(uuid())
+  value        Int
+  date         DateTime    @default(now())
+  Glasshouse   Glasshouse? @relation(fields: [glasshouseId], references: [id])
+  glasshouseId String?
 }
 
-model HumidityVal {
-  id       String   @id @default(uuid())
-  plant    Plant?   @relation(fields: [plantid], references: [id])
-  plantid  String?
-  val      String
-  date     DateTime @db.Timestamp(3)
+model TemperatureValue {
+  temperatureId String      @id @default(uuid())
+  value         Float
+  date          DateTime    @default(now())
+  Glasshouse    Glasshouse? @relation(fields: [glasshouseId], references: [id])
+  glasshouseId  String?
 }
-
-model FluidsVal {
-  id       String   @id @default(uuid())
-  plant    Plant?   @relation(fields: [plantid], references: [id])
-  plantid  String?
-  val      String
-  date     DateTime  @db.Timestamp(3)
-}
-
-model LightRule {
-  id       String   @id @default(uuid())
-  hourStart     Int
-  minuteStart   Int
-  secondStart   Int
-  hourEnd     Int
-  minuteEnd   Int
-  secondEnd   Int
-  }

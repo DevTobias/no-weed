@@ -7,14 +7,14 @@ class TemperatureContent extends StatelessWidget {
     required this.temperature,
   }) : super(key: key);
 
-  final double temperature;
+  final double? temperature;
 
   @override
   Widget build(BuildContext context) {
     return SplitContentCard(
       icon: Icons.thermostat,
-      title: "$temperature °C  ",
-      subtitle: "Inside",
+      title: temperature != null ? "$temperature °C  " : "Temperature",
+      subtitle: temperature != null ? "Inside" : "-",
     );
   }
 }

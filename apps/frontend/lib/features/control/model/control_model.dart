@@ -1,6 +1,6 @@
 class ControlModel {
   final double temperature;
-  final int moisture;
+  final int humidity;
   final int lightLevel;
   final int waterLevel;
   final int startHour;
@@ -11,7 +11,7 @@ class ControlModel {
 
   ControlModel({
     required this.temperature,
-    required this.moisture,
+    required this.humidity,
     required this.lightLevel,
     required this.waterLevel,
     required this.startHour,
@@ -23,7 +23,7 @@ class ControlModel {
 
   ControlModel.fromJson(Map<String, dynamic> json)
       : temperature = json['temperature'],
-        moisture = json['moisture'],
+        humidity = json['humidity'],
         lightLevel = json['light_level'],
         waterLevel = json['water_level'],
         startHour = json['start_hour'],

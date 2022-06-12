@@ -7,14 +7,14 @@ class LightContent extends StatelessWidget {
     required this.lightLevel,
   }) : super(key: key);
 
-  final int lightLevel;
+  final int? lightLevel;
 
   @override
   Widget build(BuildContext context) {
     return SplitContentCard(
       icon: Icons.light,
       title: "Light",
-      subtitle: "$lightLevel Lumens",
+      subtitle: lightLevel != null ? "$lightLevel Lumens" : "-",
     );
   }
 }

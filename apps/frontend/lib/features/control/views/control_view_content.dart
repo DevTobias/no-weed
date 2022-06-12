@@ -18,7 +18,7 @@ class ControlViewContent extends StatelessWidget {
     required this.data,
   }) : super(key: key);
 
-  final ControlModel data;
+  final ControlModel? data;
 
   @override
   Widget build(BuildContext context) {
@@ -37,15 +37,15 @@ class ControlViewContent extends StatelessWidget {
             children: [
               Expanded(
                 child: SplitInfoCard(
-                  top: TemperatureContent(temperature: data.temperature),
-                  bottom: MoistureContent(moisture: data.moisture),
+                  top: TemperatureContent(temperature: data?.temperature),
+                  bottom: MoistureContent(humidity: data?.humidity),
                 ),
               ),
               Gap(20),
               Expanded(
                 child: SplitInfoCard(
-                  top: LightContent(lightLevel: data.lightLevel),
-                  bottom: WifiContent(connected: true),
+                  top: LightContent(lightLevel: data?.lightLevel),
+                  bottom: WifiContent(connected: data != null),
                 ),
               ),
             ],
@@ -55,7 +55,7 @@ class ControlViewContent extends StatelessWidget {
             children: [
               Expanded(
                 child: InfoCard(
-                  body: WaterLevelContent(waterLevel: data.waterLevel),
+                  body: WaterLevelContent(waterLevel: data?.waterLevel ?? 0),
                 ),
               ),
               Gap(20),
@@ -68,10 +68,10 @@ class ControlViewContent extends StatelessWidget {
           ),
           Gap(20),
           LightInterval(
-            startHour: data.startHour,
-            endHour: data.endHour,
-            startMinute: data.startMinute,
-            endMinute: data.endMinute,
+            startHour: data?.startHour ?? 0,
+            endHour: data?.endHour ?? 0,
+            startMinute: data?.startMinute ?? 0,
+            endMinute: data?.endMinute ?? 0,
           ),
         ],
       ),
