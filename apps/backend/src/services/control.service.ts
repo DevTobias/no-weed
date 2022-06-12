@@ -1,3 +1,4 @@
+import { updateLightTask } from '@Config/cronjobs';
 import { prisma } from '@Config/index';
 import { ApiError } from '@infotition/express-error-handler';
 import httpStatus from 'http-status';
@@ -52,7 +53,7 @@ export const saveLightInterval = async (
   isStart: boolean,
   time: { hours: number; minutes: number },
 ) => {
-  // TODO: ADJUST CRON JOB FOR ARDUINO INTERVAL
+  updateLightTask(isStart, time.hours, time.minutes);
 
   try {
     if (isStart)
