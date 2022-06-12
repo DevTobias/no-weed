@@ -48,6 +48,35 @@ export const getControlData = async (glassHouseId: string) => {
   };
 };
 
+export const getAllData = async (glassHouseId: string) => {
+  const raw = await prisma.glasshouse.findUnique({
+    where: { id: glassHouseId },
+    select: {
+      humidityValues: {
+        orderBy: { date: 'asc' },
+        select: { value: true, date: true },
+      },
+      lightValues: {
+        orderBy: { date: 'asc' },
+        select: { value: true, date: true },
+      },
+      temperatureValues: {
+        orderBy: { date: 'asc' },
+        select: { value: true, date: true },
+      },
+    },
+  });
+
+  if (!raw)
+    throw new ApiError(httpStatus.BAD_REQUEST, 'glasshouse id not registered');
+
+  return {
+    humidity: raw.humidityValues,
+    light_level: raw.lightValues,
+    temperature: raw.temperatureValues,
+  };
+};
+
 export const saveLightInterval = async (
   glassHouseId: string,
   isStart: boolean,

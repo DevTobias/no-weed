@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:frontend/features/control/views/control_view.dart';
+import 'package:frontend/features/data/views/data_view.dart';
 import 'package:frontend/theme/weed_text_style.dart';
 import 'package:frontend/widgets/transparent_app_bar.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
@@ -17,13 +18,13 @@ class _BottomNavigationState extends State<BottomNavigation> {
   Widget currentView() {
     switch (_currentIndex) {
       case 0:
-        return Text("Data");
+        return DataView();
       case 1:
         return ControlView();
       case 2:
         return Center(
             child: Text(
-          "Profile",
+          "Coming soon...",
           style: WeedTextTheme.of(context).headline2.bold,
         ));
       default:
