@@ -6,4 +6,9 @@ class DataViewmodel {
   static final chartDataProvider = FutureProvider.autoDispose<DataModel?>(
     (ref) async => ref.read(DataService.dataProvider).getAllData(),
   );
+
+  static final dataProvider =
+      StateNotifierProvider.autoDispose<DataNotifier, String>(
+    (ref) => DataNotifier(),
+  );
 }

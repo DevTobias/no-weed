@@ -11,3 +11,8 @@ class DataService {
     return DataRepository.getData();
   }
 }
+
+class DataNotifier extends StateNotifier<String> {
+  DataNotifier() : super("Temperature");
+  void setDataMode(String value) => state = value;
+}
