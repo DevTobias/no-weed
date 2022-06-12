@@ -8,6 +8,9 @@ version: 1.0.0+1
 environment:
   sdk: ">=2.17.0 <3.0.0"
 
+flutter_native_splash:
+  color: "#42a5f5"
+
 dependencies:
   flutter:
     sdk: flutter
@@ -17,6 +20,7 @@ dependencies:
     #path: modules/content
 
   #### External Packages
+  flutter_native_splash: ^2.2.3
   freezed: ^2.0.3+1
   freezed_annotation: ^2.0.3
   gap: ^2.0.0
@@ -25,6 +29,7 @@ dependencies:
   intl: ^0.17.0
   liquid_progress_indicator: ^0.4.0
   riverpod: ^1.0.3
+  salomon_bottom_bar: ^3.3.1
 
 dev_dependencies:
   flutter_lints: ^2.0.0
