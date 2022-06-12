@@ -27,10 +27,8 @@ class TransparentAppBar extends StatelessWidget with PreferredSizeWidget {
         icon: Icon(icon!),
       );
 
-  Widget get _title => Text(
-        title,
-        maxLines: 2,
-        textAlign: TextAlign.center,
-        overflow: TextOverflow.ellipsis,
+  Widget get _title => Image.asset(
+        "assets/images/plant_logo.png",
+        height: 50,
       );
 }
