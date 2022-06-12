@@ -7,6 +7,11 @@ export const getControlCenterData = catchAsync(async (req, res) => {
   res.status(httpStatus.OK).send(data);
 });
 
+export const getAllData = catchAsync(async (req, res) => {
+  const data = await controlService.getAllData(req.params.id);
+  res.status(httpStatus.OK).send(data);
+});
+
 export const toggleLight = catchAsync(async (req, res) => {
   const { id, value } = req.body;
   await controlService.toggleLight(id, value);
