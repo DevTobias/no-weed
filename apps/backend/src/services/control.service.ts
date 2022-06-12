@@ -1,6 +1,7 @@
 import { prisma } from '@Config/index';
 import { ApiError } from '@infotition/express-error-handler';
 import httpStatus from 'http-status';
+import { sendEvent } from './arduino.service';
 
 export const getControlData = async (glassHouseId: string) => {
   const raw = await prisma.glasshouse.findUnique({
@@ -76,7 +77,7 @@ export const saveLightInterval = async (
 };
 
 export const toggleLight = async (glassHouseId: string, value: boolean) => {
-  //TODO: SEND ARDUINO SIGNAL
+  sendEvent(value ? 'lighton' : 'lightoff');
 
   try {
     return prisma.glasshouse.update({
@@ -89,6 +90,5 @@ export const toggleLight = async (glassHouseId: string, value: boolean) => {
 };
 
 export const waterPlant = async () => {
-  console.log('watering');
-  //TODO: SEND ARDUINO SIGNAL
+  sendEvent('water');
 };

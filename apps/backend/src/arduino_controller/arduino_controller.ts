@@ -1,4 +1,3 @@
-import { data } from '@Controllers/control.controller';
 import { ReadlineParser } from '@serialport/parser-readline';
 import { SerialPort } from 'serialport';
 import { handleArduinoInput } from './handleData';

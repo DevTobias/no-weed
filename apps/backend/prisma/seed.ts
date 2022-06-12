@@ -3,6 +3,7 @@ import { PrismaClient, Prisma } from '@prisma/client';
 const prisma = new PrismaClient();
 
 const glasshouseData: Prisma.GlasshouseCreateInput = {
+  id: 'dc7521a9-c17c-4194-8ba3-eae27f99be34',
   lightPhaseHourStart: 7,
   lightPhaseMinuteStart: 0,
   lightPhaseHourEnd: 19,

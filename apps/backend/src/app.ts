@@ -4,9 +4,10 @@ import {
   successHandler as morganSuccessHandler,
   errorHandler as morganErrorHandler,
   corsOptions,
+  parser,
 } from '@Config/index';
 import { routes } from '@Routes/v1';
-//import { setListener } from '@arduino_controller/arduino_controller';
+import { handleArduinoEvent } from '@Services/arduino.service';
 import {
   errorConverter,
   errorHandler,
@@ -70,4 +71,5 @@ app.use((err: ApiError, _: Request, res: Response, __: NextFunction) =>
   errorHandler(err, logger, res),
 );
 
-//setListener();
+// handle arduino events
+parser.on('data', handleArduinoEvent);
